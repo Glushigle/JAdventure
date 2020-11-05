@@ -66,7 +66,7 @@ public class Storage {
         boolean canBeAdded = true;
         if (hasMaxWeight()) {
             double totalWeight = itemStack.getItem().getWeight() * itemStack.getAmount();
-            if (totalWeight > maxWeight) {
+            if (totalWeight + this.calculateWeight()> maxWeight) {
                 canBeAdded = false;
             }
         }
