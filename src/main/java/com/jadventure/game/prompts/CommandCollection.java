@@ -336,4 +336,28 @@ public enum CommandCollection {
              }
         }
     }
+    
+    public void dummy_addItemToLocation() {
+        ItemRepository itemRepo = GameBeans.getItemRepository();
+        if (player.getHealth() < player.getHealthMax()/3) {
+            player.getLocation().addItem(itemRepo.getRandomFood(player.getLevel()));
+        } else {
+            Random rand = new Random();
+            int startIndex = rand.nextInt(3);
+            switch (startIndex) {
+                case 0:
+                    player.getLocation().addItem(itemRepo.getRandomWeapon(player.getLevel()));
+                    break;
+                case 1:
+                    player.getLocation().addItem(itemRepo.getRandomFood(player.getLevel()));
+                    break;
+                case 2:
+                    player.getLocation().addItem(itemRepo.getRandomArmour(player.getLevel()));
+                    break;
+                case 3:
+                    player.getLocation().addItem(itemRepo.getRandomPotion(player.getLevel()));
+                    break;
+             }
+        }
+    }
 }
